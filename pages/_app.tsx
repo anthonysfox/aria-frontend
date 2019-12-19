@@ -6,6 +6,8 @@ import { Store } from "redux";
 import { Provider } from "react-redux";
 import withRedux from "next-redux-wrapper";
 
+import "../css/tailwind.css";
+
 import withData from "../lib/withData";
 import Page from "../components/primary/Page";
 import assembleStore from "../store/assembleStore";
