@@ -1,7 +1,7 @@
 import React from "react";
-import { NextComponentType } from "next";
+import { NextPage } from "next";
 
-const Home: NextComponentType = () => (
+const Home: NextPage = () => (
   <div>
     <h1>Home Page</h1>
   </div>
