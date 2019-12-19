@@ -22,3 +22,17 @@ mutation signupUser(
     authToken
   }
 }
+
+mutation loginUser($emailAddress: String!, $password: String!) {
+  loginUser(
+    loginUserData: { emailAddress: $emailAddress, password: $password }
+  ) {
+    user {
+      id
+      emailAddress
+      createdAt
+      updatedAt
+    }
+    authToken
+  }
+}

@@ -1,9 +1,14 @@
 import React from "react";
 import Link from "next/link";
 
+interface ILink {
+  href: string;
+  label: string;
+}
+
 const links = [
-  { href: "https://zeit.co/now", label: "ZEIT" },
-  { href: "https://github.com/zeit/next.js", label: "GitHub" }
+  { href: "/auth/signup", label: "Sign Up" },
+  { href: "/auth/login", label: "Login" }
 ];
 
 const Nav = () => (
@@ -16,7 +21,9 @@ const Nav = () => (
       </li>
       {links.map(({ href, label }) => (
         <li key={href}>
-          <a href={href}>{label}</a>
+          <Link href={href}>
+            <a>{label}</a>
+          </Link>
         </li>
       ))}
     </ul>

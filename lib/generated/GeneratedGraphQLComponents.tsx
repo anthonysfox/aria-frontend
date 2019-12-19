@@ -272,6 +272,24 @@ export type SignupUserMutation = (
   )> }
 );
 
+export type LoginUserMutationVariables = {
+  emailAddress: Scalars['String'],
+  password: Scalars['String']
+};
+
+
+export type LoginUserMutation = (
+  { __typename?: 'Mutation' }
+  & { loginUser: (
+    { __typename?: 'AuthUserResponse' }
+    & Pick<AuthUserResponse, 'authToken'>
+    & { user: (
+      { __typename?: 'User' }
+      & Pick<User, 'id' | 'emailAddress' | 'createdAt' | 'updatedAt'>
+    ) }
+  ) }
+);
+
 
 export const SignupUserDocument = gql`
     mutation signupUser($fullName: String!, $emailAddress: String!, $password: String!, $birthday: DateTime!) {
@@ -332,3 +350,59 @@ export function useSignupUserMutation(baseOptions?: ApolloReactHooks.MutationHoo
 export type SignupUserMutationHookResult = ReturnType<typeof useSignupUserMutation>;
 export type SignupUserMutationResult = ApolloReactCommon.MutationResult<SignupUserMutation>;
 export type SignupUserMutationOptions = ApolloReactCommon.BaseMutationOptions<SignupUserMutation, SignupUserMutationVariables>;
+export const LoginUserDocument = gql`
+    mutation loginUser($emailAddress: String!, $password: String!) {
+  loginUser(loginUserData: {emailAddress: $emailAddress, password: $password}) {
+    user {
+      id
+      emailAddress
+      createdAt
+      updatedAt
+    }
+    authToken
+  }
+}
+    `;
+export type LoginUserMutationFn = ApolloReactCommon.MutationFunction<LoginUserMutation, LoginUserMutationVariables>;
+export type LoginUserComponentProps = Omit<ApolloReactComponents.MutationComponentOptions<LoginUserMutation, LoginUserMutationVariables>, 'mutation'>;
+
+    export const LoginUserComponent = (props: LoginUserComponentProps) => (
+      <ApolloReactComponents.Mutation<LoginUserMutation, LoginUserMutationVariables> mutation={LoginUserDocument} {...props} />
+    );
+    
+export type LoginUserProps<TChildProps = {}> = ApolloReactHoc.MutateProps<LoginUserMutation, LoginUserMutationVariables> | TChildProps;
+export function withLoginUser<TProps, TChildProps = {}>(operationOptions?: ApolloReactHoc.OperationOption<
+  TProps,
+  LoginUserMutation,
+  LoginUserMutationVariables,
+  LoginUserProps<TChildProps>>) {
+    return ApolloReactHoc.withMutation<TProps, LoginUserMutation, LoginUserMutationVariables, LoginUserProps<TChildProps>>(LoginUserDocument, {
+      alias: 'loginUser',
+      ...operationOptions
+    });
+};
+
+/**
+ * __useLoginUserMutation__
+ *
+ * To run a mutation, you first call `useLoginUserMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useLoginUserMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [loginUserMutation, { data, loading, error }] = useLoginUserMutation({
+ *   variables: {
+ *      emailAddress: // value for 'emailAddress'
+ *      password: // value for 'password'
+ *   },
+ * });
+ */
+export function useLoginUserMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<LoginUserMutation, LoginUserMutationVariables>) {
+        return ApolloReactHooks.useMutation<LoginUserMutation, LoginUserMutationVariables>(LoginUserDocument, baseOptions);
+      }
+export type LoginUserMutationHookResult = ReturnType<typeof useLoginUserMutation>;
+export type LoginUserMutationResult = ApolloReactCommon.MutationResult<LoginUserMutation>;
+export type LoginUserMutationOptions = ApolloReactCommon.BaseMutationOptions<LoginUserMutation, LoginUserMutationVariables>;
