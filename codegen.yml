@@ -1,0 +1,14 @@
+overwrite: true
+generates:
+  lib/generated/GeneratedGraphQLComponents.tsx:
+    documents: "graphql/**/*.graphql"
+    schema:
+      - "https://aria-backend.herokuapp.com/graphql"
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+    config:
+      withHOC: true
+      withComponent: true
+      withHooks: true

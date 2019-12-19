@@ -1,0 +1,24 @@
+mutation signupUser(
+  $fullName: String!
+  $emailAddress: String!
+  $password: String!
+  $birthday: DateTime!
+) {
+  signupUser(
+    signupUserData: {
+      fullName: $fullName
+      emailAddress: $emailAddress
+      password: $password
+      birthday: $birthday
+    }
+  ) {
+    user {
+      id
+      fullName
+      emailAddress
+      createdAt
+      updatedAt
+    }
+    authToken
+  }
+}
