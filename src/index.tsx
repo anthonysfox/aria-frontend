@@ -9,7 +9,7 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import assembleStore from "./store/assembleStore";
 import history from "./store/history/browser.history";
-import createClient from "./lib/apollo.client";
+import createClient from "./apollo/apollo.client";
 
 const ariaStore = assembleStore();
 
