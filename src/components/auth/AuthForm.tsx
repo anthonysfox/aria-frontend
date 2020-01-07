@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import AuthFormInput from "./AuthFormInput";
+import { useSignupUserMutation } from "../../lib/generated/GeneratedGraphQLComponents";
 
 interface AuthFormProps {
   editing: boolean;
@@ -20,6 +21,8 @@ const AuthForm: React.FC<AuthFormProps> = ({
   lastName,
   birthday
 }) => {
+  const [signup, { data, loading, error }] = useSignupUserMutation();
+
   const [fName, setFName] = useState<string>("");
   const [lName, setLName] = useState<string>("");
   const [pass, setPass] = useState<string>("");
