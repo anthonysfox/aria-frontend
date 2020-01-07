@@ -1,4 +1,3 @@
-import withApollo from "next-with-apollo";
 import { ApolloClient, InMemoryCache, HttpLink } from "apollo-boost";
 
 import { PrimaryUtils } from "../shared/utils/primary.utils";
@@ -15,4 +14,4 @@ function createClient(serverData: any): ApolloClient<any> {
   });
 }
 
-export default withApollo(createClient);
+export default createClient;

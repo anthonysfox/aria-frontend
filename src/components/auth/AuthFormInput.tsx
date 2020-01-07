@@ -3,7 +3,7 @@ import React, { useCallback } from "react";
 interface AuthFormInputProps {
   label: string;
   id: string;
-  value: string;
+  value: any;
   inputType?: string;
   callback: Function;
 }

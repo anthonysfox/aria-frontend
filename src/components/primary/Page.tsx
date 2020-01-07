@@ -1,9 +1,10 @@
 import React from "react";
-import { NextComponentType } from "next";
 
 import Nav from "./nav";
 
-const Page: NextComponentType = ({ children }) => {
+interface PageWrapperProps {}
+
+const Page: React.FC<PageWrapperProps> = ({ children }) => {
   return (
     <main>
       <Nav />

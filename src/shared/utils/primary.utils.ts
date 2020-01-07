@@ -1,5 +1,5 @@
 export class PrimaryUtils {
-  static isDevelopment(): boolean {
+  static get isDevelopment(): boolean {
     if (process.env.NODE_ENV !== "production") {
       return true;
     }
