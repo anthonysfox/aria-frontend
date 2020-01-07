@@ -13,7 +13,6 @@ export type Scalars = {
   Boolean: boolean,
   Int: number,
   Float: number,
-  /** The javascript `Date` as string. Type represents date and time as the ISO Date string. */
   DateTime: any,
 };
 
@@ -50,32 +49,17 @@ export type LoginUserInput = {
 
 export type Mutation = {
    __typename?: 'Mutation',
-  /** Creates and returns track, with possible relations. */
   createTrack: Track,
-  /** Updates a track record with associations @Todo */
   updateTrack: Track,
-  /** 
- * Finds and deletes a track, based on the track ID passed as an argument. If the
-   * track is not found, there is a not found error raised.
- */
   deleteTrack: Track,
-  /** Creates track genre with relation to a track */
   createTrackGenre: TrackGenre,
-  /** Registers user with the proper credentials. */
   signupUser?: Maybe<AuthUserResponse>,
-  /** Accepts the user's email address and password. Once successfully compared, the user and the auth token are returned. */
   loginUser: AuthUserResponse,
-  /** Creates and returns playlist */
   createPlaylist: Playlist,
-  /** Finds a playlist and updates both the title and the description */
   updatePlaylist: Playlist,
-  /** Finds and deletes a playlist */
   deletePlaylist: Playlist,
-  /** Adds a track to a playlist */
   addTrack: Playlist,
-  /** Removes a track to a playlist */
   removeTrack: Playlist,
-  /** Creates a play with the proper track relations. */
   createPlay: Play,
 };
 
@@ -164,17 +148,11 @@ export type Playlist = {
 export type Query = {
    __typename?: 'Query',
   allUsers: Array<User>,
-  /** Finds and returns array of all found tracks */
   allTracks: Array<Track>,
-  /** Finds a single track and returns the associated track. */
   findTrack: Track,
-  /** Finds and returns an array of all track genres */
   allTrackGenres: Array<TrackGenre>,
-  /** Finds and returns all playlists */
   allPlaylists: Array<Playlist>,
-  /** Finds a single playlist by provided ID. */
   findOnePlaylistById: Scalars['ID'],
-  /** Finds and returns all plays or an empty array. */
   allPlays: Array<Play>,
 };
 

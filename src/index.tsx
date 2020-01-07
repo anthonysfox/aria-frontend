@@ -2,19 +2,23 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { ConnectedRouter } from "connected-react-router";
+import { ApolloProvider } from "@apollo/react-hooks";
 
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import assembleStore from "./store/assembleStore";
 import history from "./store/history/browser.history";
+import createClient from "./lib/apollo.client";
 
 const ariaStore = assembleStore();
 
 ReactDOM.render(
   <Provider store={ariaStore}>
     <ConnectedRouter history={history}>
-      <App />
+      <ApolloProvider client={createClient()}>
+        <App />
+      </ApolloProvider>
     </ConnectedRouter>
   </Provider>,
   document.getElementById("root")

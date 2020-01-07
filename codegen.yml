@@ -1,7 +1,7 @@
 overwrite: true
 generates:
-  lib/generated/GeneratedGraphQLComponents.tsx:
-    documents: "graphql/**/*.graphql"
+  src/lib/generated/GeneratedGraphQLComponents.tsx:
+    documents: "src/graphql/**/*.graphql"
     schema:
       - "https://aria-backend.herokuapp.com/graphql"
     plugins:
