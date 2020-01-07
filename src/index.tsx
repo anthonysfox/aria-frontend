@@ -15,11 +15,11 @@ const ariaStore = assembleStore();
 
 ReactDOM.render(
   <Provider store={ariaStore}>
-    <ConnectedRouter history={history}>
-      <ApolloProvider client={createClient()}>
+    <ApolloProvider client={createClient()}>
+      <ConnectedRouter history={history}>
         <App />
-      </ApolloProvider>
-    </ConnectedRouter>
+      </ConnectedRouter>
+    </ApolloProvider>
   </Provider>,
   document.getElementById("root")
 );
